@@ -27,12 +27,14 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-ik-#*9^44ixh!88!%(y7i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,[::1],testserver,*').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,[::1],testserver,*.onrender.com,regional-veiculos.onrender.com,*').split(',')
 
 # CSRF Settings for Railway
 CSRF_TRUSTED_ORIGINS = [
     'https://regionalveiculos.up.railway.app',
     'https://*.up.railway.app',
+    'https://regional-veiculos.onrender.com',
+    'https://*.onrender.com',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ]
