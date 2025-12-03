@@ -20,45 +20,6 @@
     color: #fff !important;
     border-color: #25d366 !important;
 }
-@media (max-width: 768px) {
-    .social-links .btn {
-        margin-bottom: 0.5rem;
-        margin-right: 0 !important;
-        width: 100%;
-    }
-    .social-links .btn:last-child {
-        margin-bottom: 0;
-    }
-}
-@media (max-width: 768px) {
-    .cta-section {
-        width: 100vw;
-        max-width: 100vw;
-        margin-left: calc(-1 * (100vw - 100%) / 2) !important;
-        margin-right: calc(-1 * (100vw - 100%) / 2) !important;
-        border-radius: 0 !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-    .cta-buttons {
-        flex-direction: column;
-        gap: 16px;
-        align-items: center;
-    }
-}
-/* Espaçamento entre botões da página Sobre no mobile */
-@media (max-width: 768px) {
-    .sobre-btn-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-    .sobre-btn-group .btn {
-        width: 100%;
-    }
-}
-/* Regional Veículos - CSS Principal */
-
 /* Variáveis de Cores e Transições */
 :root {
     --cor-primaria: #ffffff;
@@ -136,135 +97,6 @@ h1, h2, h3, h4, h5, h6 {
 /* Ajustar body para compensar navbar fixa */
 body {
     padding-top: 80px;
-}
-
-/* Z-index aumentado para mobile */
-@media (max-width: 768px) {
-    .navbar {
-        z-index: 8888 !important;
-        border-bottom: none !important; /* Remove a listra vermelha em mobile */
-    }
-    
-    /* Remove o border também do navbar quando scrolled */
-    .navbar.scrolled {
-        border-bottom: none !important;
-        border-bottom-color: transparent !important;
-    }
-    
-    /* Remover completamente o padding para banner rente */
-    body {
-        padding-top: 0 !important; /* Removido completamente */
-        margin-top: -10px !important;
-    }
-    
-    /* Subir ligeiramente o banner em mobile */
-    .hero-section,
-    .hero-section-responsive {
-        margin-top: -25px !important; /* Sobe o banner para nivelar com o menu */
-        padding-top: 0 !important;
-    }
-    
-    /* Remove a listra vermelha da seção de carro em destaque */
-    .featured-car-section {
-        border-top: none !important;
-        border: none !important;
-    }
-    
-    /* Remove também possíveis borders de outras seções */
-    .rights-section {
-        border-top: none !important;
-    }
-    
-    /* Remove todos os borders vermelhos em mobile */
-    section, div, .container, .container-fluid {
-        border-top: none !important;
-        border-bottom: none !important;
-    }
-    
-    /* Forçar remoção de qualquer border com cor secundária */
-    *[style*="border"], *[class*="border"] {
-        border-color: transparent !important;
-    }
-    
-    /* Regra específica final para eliminar listra vermelha */
-    .hero-section + *,
-    .hero-section-responsive + *,
-    section:nth-of-type(2) {
-        border-top: none !important;
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-    
-    /* Ajustar posição do carro flutuante */
-    .simple-floating-car {
-        margin-top: -1.5rem !important;
-    }
-    
-    /* Ajustar texto auto-digitável para mobile */
-    .featured-title,
-    .featured-title-typewriter {
-        font-size: 1.8rem !important; /* Reduzido de 2.5rem */
-        margin-top: 0;
-    }
-    
-    .featured-text,
-    .featured-text-animated {
-        font-size: 1rem !important; /* Reduzido de 1.1rem */
-        margin-top: 0;
-    }
-    
-    /* Ajustar botão de financiamento */
-    .financiamento-form .d-grid {
-        margin-top: 2rem !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    .financiamento-form .btn-danger {
-        padding: 1rem 2rem !important;
-        font-size: 1.1rem !important;
-        font-weight: 600 !important;
-    }
-    
-    /* Remover qualquer espaçamento do container principal */
-    .container-fluid,
-    .container {
-        padding-top: 0 !important;
-        margin-top: 0 !important;
-    }
-    
-    /* Garantir que não há espaço entre navbar e primeiro elemento */
-    main,
-    .main-content {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-    
-    /* Ajustar páginas que não são homepage para compensar navbar fixa */
-    [data-page="financiamento"] .section,
-    [data-page="sobre"] .section {
-        padding-top: 100px !important; /* Adiciona espaço para navbar fixa */
-    }
-    
-    /* Ajustar seções gerais em páginas internas */
-    body:not(.home-page) .section:first-of-type {
-        padding-top: 100px !important;
-    }
-}
-
-/* Ajuste adicional para smartphones menores */
-@media (max-width: 480px) {
-    .hero-section,
-    .hero-section-responsive {
-        margin-top: -30px !important; /* Sobe mais em telas pequenas */
-    }
-}
-
-/* Ajuste para telas muito pequenas */
-@media (max-width: 360px) {
-    .hero-section,
-    .hero-section-responsive {
-        margin-top: -35px !important; /* Sobe ainda mais em telas muito pequenas */
-    }
 }
 
 .navbar.scrolled {
@@ -378,35 +210,6 @@ body {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Responsivo para mobile */
-@media (max-width: 991.98px) {
-    .navbar .container-fluid {
-        justify-content: space-between;
-        max-width: 100%;
-        padding: 0 1rem;
-    }
-    
-    .navbar-collapse {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .navbar-nav {
-        text-align: left;
-        gap: 0.25rem;
-    }
-    
-    .navbar-nav .nav-link {
-        margin: 0.1rem 0;
-        padding: 0.75rem 1rem;
-    }
-    
-    .navbar-brand {
-        font-size: 1.3rem;
-    }
-}
-
 .navbar-toggler:focus {
     box-shadow: none;
 }
@@ -462,7 +265,7 @@ body {
 .hero-impact-text {
     position: absolute;
     top: 30%;
-    left: 890px;
+    left: 680px;
     transform: translateY(-50%);
     z-index: 1;
     max-width: 300px;
@@ -492,263 +295,15 @@ body {
     51%, 100% { opacity: 0; }
 }
 
-/* Responsivo para texto de impacto */
-@media (max-width: 915px) {
-    .hero-impact-text {
-        top: 28%;
-        left: auto;
-        right: 25px;
-        max-width: 45%;
-        text-align: right;
-        z-index: 10;
-    }
-    
-    .typewriter-text {
-        font-size: 2.2rem;
-        min-height: 65px;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-    }
-    
-    .typewriter-text::after {
-        font-size: 2.2rem;
-    }
-}
-
-@media (max-width: 851px) {
-    .hero-impact-text {
-        top: 30%;
-        left: auto;
-        right: 22px;
-        max-width: 48%;
-        text-align: right;
-        z-index: 10;
-    }
-    
-    .typewriter-text {
-        font-size: 1.9rem;
-        min-height: 58px;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-    }
-    
-    .typewriter-text::after {
-        font-size: 1.9rem;
-    }
-}
-
-@media (max-width: 800px) {
-    .hero-impact-text {
-        top: 28%;
-        left: auto;
-        right: 20px;
-        max-width: 50%;
-        text-align: right;
-        z-index: 10;
-    }
-
-    .btn-danger {
-        padding: 10px 18px !important;
-    }
-    
-    .typewriter-text {
-        font-size: 1.8rem;
-        min-height: 55px;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-    }
-    
-    .typewriter-text::after {
-        font-size: 1.8rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-impact-text {
-        top: 25%; /* Posicionamento ajustado */
-        left: auto; /* Remove left fixo */
-        right: 80px; /* Posiciona à direita */
-        max-width: 100%; /* Largura menor - só metade da tela */
-        text-align: right; /* Alinhamento à direita */
-        z-index: 10; /* Garantir que fique sobre a imagem */
-    }
-    
-    .typewriter-text {
-        font-size: 1.2rem; /* Diminuído de 1.4rem para 1.2rem */
-        min-height: 45px; /* Ajustado proporcionalmente */
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8); /* Sombra mais forte para contraste */
-    }
-    
-    .typewriter-text::after {
-        font-size: 1.4rem; /* Diminuído de 1.6rem para 1.4rem */
-    }
-}
-
-/* Banner e botões responsivos */
-@media (max-width: 576px) {
-    .hero-impact-text {
-        top: 30%; /* Posicionamento ajustado */
-        left: auto; /* Remove left fixo */
-        right: 10px; /* Posiciona à direita */
-        max-width: 40%; /* Largura um pouco maior para mobile muito pequeno */
-        padding: 0 1vw;
-        text-align: right; /* Alinhamento à direita */
-        z-index: 10;
-    }
-    .typewriter-text {
-        font-size: 1.0rem; /* Diminuído de 1.2rem para 1.0rem para mobile pequeno */
-        min-height: 30px; /* Ajustado proporcionalmente */
-        padding: 0.3em 0;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Sombra muito forte */
-    }
-    .typewriter-text::after {
-        font-size: 1.0rem; /* Diminuído de 1.2rem para 1.0rem */
-    }
-    .bottom-contact-buttons {
-        position: absolute;
-        bottom: 40px; /* Movido mais para baixo (era 60px) */
-        left: 50%;
-        transform: translateX(-50%);
-        display: none !important; /* Ocultar botões em telas pequenas */
-        flex-direction: row !important; /* Forçar lado a lado */
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 10px; /* Espaço menor entre os botões */
-        margin: 0px;
-        width: auto;
-        z-index: 10; /* Garantir que fique sobre a imagem */
-    }
-    .contact-btn {
-        padding: 4px 8px !important; /* Botões mais compactos */
-        font-size: 0.35rem !important; /* Fonte ainda menor */
-        min-width: 65px !important; /* Largura menor */
-        width: auto !important; /* Sobrescrever w-100 do Bootstrap */
-        height: 22px !important; /* Altura menor */
-        border: 1.5px solid white !important; /* Borda mais fina */
-        margin: 0 !important; /* Remover margens do Bootstrap */
-        flex: none !important; /* Não expandir */
-        line-height: 1.0 !important; /* Line height compacto */
-        letter-spacing: 0 !important; /* Remover letter-spacing */
-        text-transform: none !important; /* Remover uppercase */
-    }
-}
-
-/* Telas muito pequenas - 320px */
-@media (max-width: 320px) {
-    .bottom-contact-buttons {
-        display: none !important; /* Ocultar botões em telas muito pequenas */
-    }
-}
-
-/* Restante do CSS continua... */
-@media (max-width: 576px) {
-    .contact-btn {
-        font-size: 1rem;
-        min-width: 100%;
-        padding: 10px 0;
-    }
-    .navbar {
-        padding: 0.5rem 0.5rem;
-    }
-    .navbar-brand {
-        font-size: 1rem;
-    }
-    .navbar-nav .nav-link {
-        font-size: 0.95rem;
-        padding: 0.5rem 0.7rem;
-    }
-    .social-sidebar {
-        right: 5px;
-        gap: 6px;
-    }
-    .social-link {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
-    }
-    .card {
-        margin-bottom: 1.2rem;
-    }
-    .container, .container-fluid {
-        padding-left: 8px !important;
-        padding-right: 8px !important;
-    }
-    .form-control, .form-select {
-        font-size: 0.98rem;
-        padding: 0.5rem 0.75rem;
-    }
-    .footer {
-        font-size: 0.95rem;
-        padding: 1.2rem 0.5rem;
-    }
-}
-
-/* Cards e grids responsivos */
-@media (max-width: 768px) {
-    .card {
-        min-width: 90vw;
-        max-width: 98vw;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.2rem;
-    }
-    .container, .container-fluid {
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-    }
-    .footer {
-        font-size: 1rem;
-        padding: 1.5rem 1rem;
-    }
-}
-
-/* Ajustes para formulários em mobile */
-@media (max-width: 576px) {
-    .form-group, .form-row, .form-control, .form-select {
-        width: 100% !important;
-        min-width: 0;
-        margin-bottom: 0.8rem;
-    }
-    .form-label {
-        font-size: 0.98rem;
-    }
-    .btn {
-        font-size: 1rem;
-        padding: 0.6rem 1.2rem;
-    }
-    /* Ajustes exclusivos para o formulário de financiamento */
-    .financiamento-form .form-control,
-    .financiamento-form textarea,
-    .financiamento-form select {
-        width: 100% !important;
-        min-width: 0;
-    }
-    .financiamento-form .btn {
-        width: 100% !important;
-        display: block;
-    }
-    .financiamento-form .row > [class^="col-"] {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-}
-
 /* Botões de Contato Inferior */
 .bottom-contact-buttons {
     position: absolute;
     bottom: 320px;
-    left: 790px;
+    left: 580px;
     z-index: 100;
     display: flex;
     flex-direction: row;
     gap: 30px;
-}
-
-/* Ocultar botões em mobile - regra geral */
-@media (max-width: 768px) {
-    .bottom-contact-buttons {
-        display: none !important;
-    }
 }
 
 .contact-btn {
@@ -819,98 +374,6 @@ body {
     border: 2px solid white;
 }
 
-/* Responsivo para botões de contato - larguras intermediárias */
-@media (max-width: 915px) {
-    .bottom-contact-buttons {
-        bottom: 75px;
-        left: 50%;
-        transform: translateX(-50%);
-        gap: 25px;
-        width: auto;
-        z-index: 10;
-    }
-    
-    .contact-btn {
-        padding: 11px 19px;
-        font-size: 1.2rem;
-        min-width: 170px;
-        height: 50px;
-        border: 2px solid white;
-        font-weight: 700;
-    }
-}
-
-@media (max-width: 851px) {
-    .bottom-contact-buttons {
-        bottom: 70px;
-        left: 50%;
-        transform: translateX(-50%);
-        gap: 22px;
-        width: auto;
-        z-index: 10;
-    }
-    
-    .contact-btn {
-        padding: 11px 18px;
-        font-size: 1.1rem;
-        min-width: 160px;
-        height: 48px;
-        border: 2px solid white;
-        font-weight: 700;
-    }
-}
-
-@media (max-width: 800px) {
-    .bottom-contact-buttons {
-        bottom: 75px;
-        left: 50%;
-        transform: translateX(-50%);
-        gap: 20px;
-        width: auto;
-        z-index: 10;
-    }
-    
-    .contact-btn {
-        padding: 11px 17px;
-        font-size: 1.0rem;
-        min-width: 155px;
-        height: 46px;
-        border: 2px solid white;
-        font-weight: 700;
-    }
-}
-
-/* Responsivo para botões de contato */
-@media (max-width: 768px) {
-    .bottom-contact-buttons {
-        bottom: 30px; /* Posição um pouco abaixo do banner */
-        left: 50%;
-        transform: translateX(-50%);
-        gap: 12px; /* Espaço entre botões */
-        width: auto;
-        z-index: 10; /* Garantir que fique sobre a imagem */
-        display: none !important; /* Ocultar botões em tablets pequenos */
-        flex-direction: row !important; /* Forçar lado a lado */
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    .contact-btn {
-        padding: 4px 8px !important; /* Padding ainda menor */
-        font-size: 0.7rem !important; /* Fonte menor */
-        min-width: 75px !important; /* Largura menor */
-        width: auto !important; /* Sobrescrever w-100 do Bootstrap */
-        height: 28px !important; /* Altura menor */
-        border: 1.5px solid white !important; /* Borda mais fina */
-        font-weight: 600 !important; /* Weight intermediário */
-        line-height: 1.0 !important; /* Alinhamento vertical */
-        margin: 0 !important; /* Remover margens do Bootstrap */
-        flex: none !important; /* Não expandir */
-        letter-spacing: 0 !important; /* Remover letter-spacing */
-        text-transform: none !important; /* Remover uppercase */
-    }
-}
-
 /* Hero Section Responsivo com Picture Element */
 .hero-section-responsive {
     position: relative;
@@ -935,32 +398,6 @@ body {
     object-fit: cover;
     object-position: center;
     transition: all var(--transicao-lenta);
-}
-
-/* Estilos específicos para imagem 700x500px em mobile */
-@media (max-width: 768px) {
-    .hero-bg-image {
-        /* Para imagem 700x500px - proporção 7:5 */
-        object-fit: cover;
-        object-position: center center;
-        width: 100%;
-        height: 100%;
-        max-height: 60vh;
-    }
-    
-    /* Container ajustado para proporção 700x500px */
-    .hero-background {
-        aspect-ratio: 7/5;
-        max-height: 60vh;
-        overflow: hidden;
-    }
-    
-    /* Ajuste para telas muito largas em mobile */
-    .hero-section-responsive {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
 }
 
 .hero-overlay {
@@ -988,193 +425,6 @@ body {
     position: static;
     margin: 0;
     padding: 0;
-}
-
-/* Banner para Desktop (padrão - acima de 768px) */
-@media (min-width: 769px) {
-    .hero-section {
-        background-image: var(--banner-desktop);
-        background-size: cover; /* Cobre toda a área sem espaços */
-        background-position: center top;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        aspect-ratio: 18/5; /* Mantém proporção 1800x500px */
-        width: 100vw; /* Largura total da viewport */
-        height: auto;
-        margin: 0;
-        padding: 0;
-    }
-    
-    .hero-section-responsive {
-        aspect-ratio: 18/5;
-        width: 100vw;
-        height: auto;
-    }
-}
-
-/* Banner para larguras intermediárias */
-@media (max-width: 915px) {
-    .hero-section {
-        background-image: var(--banner-mobile);
-        min-height: 52vh;
-        max-height: 62vh;
-        background-position: center center;
-        background-attachment: scroll;
-        background-size: contain;
-        background-repeat: no-repeat;
-        margin-top: 12px !important;
-        padding-top: 0 !important;
-        margin-bottom: 0;
-        position: relative;
-        top: 0;
-    }
-    
-    .hero-section-responsive {
-        min-height: 52vh;
-        max-height: 62vh;
-        margin-top: 12px !important;
-        padding-top: 0 !important;
-        position: relative;
-        top: 0;
-    }
-}
-
-@media (max-width: 851px) {
-    .hero-section {
-        background-image: var(--banner-mobile);
-        min-height: 51vh;
-        max-height: 61vh;
-        background-position: center center;
-        background-attachment: scroll;
-        background-size: contain;
-        background-repeat: no-repeat;
-        margin-top: 13px !important;
-        padding-top: 0 !important;
-        margin-bottom: 0;
-        position: relative;
-        top: 0;
-    }
-    
-    .hero-section-responsive {
-        min-height: 51vh;
-        max-height: 61vh;
-        margin-top: 13px !important;
-        padding-top: 0 !important;
-        position: relative;
-        top: 0;
-    }
-}
-
-@media (max-width: 800px) {
-    .hero-section {
-        background-image: var(--banner-mobile);
-        min-height: 50vh;
-        max-height: 60vh;
-        background-position: center center;
-        background-attachment: scroll;
-        background-size: contain;
-        background-repeat: no-repeat;
-        margin-top: 14px !important;
-        padding-top: 0 !important;
-        margin-bottom: 0;
-        position: relative;
-        top: 0;
-    }
-    
-    .hero-section-responsive {
-        min-height: 50vh;
-        max-height: 60vh;
-        margin-top: 14px !important;
-        padding-top: 0 !important;
-        position: relative;
-        top: 0;
-    }
-}
-
-/* Banner para Mobile e Tablet (768px e abaixo) */
-@media (max-width: 768px) {
-    .hero-section {
-        background-image: var(--banner-mobile);
-        min-height: 50vh; /* Ajustado para proporção 1040x700px */
-        max-height: 60vh;
-        background-position: center center;
-        background-attachment: scroll;
-        background-size: contain; /* Mudado para contain para mostrar imagem completa */
-        background-repeat: no-repeat;
-        margin-bottom: 0;
-        position: relative;
-        top: 0;
-    }
-    
-    .hero-section-responsive {
-        min-height: 50vh;
-        max-height: 60vh;
-        margin-top: 0px !important; /* Mais um pouquinho */
-        padding-top: 0 !important; /* Forçar sem padding */
-        position: relative;
-        top: 0;
-    }
-    
-    .hero-bg-image {
-        object-position: center center;
-        object-fit: contain; /* Mudado para contain */
-        max-height: 60vh;
-        width: 100%;
-    }
-    
-    .hero-background {
-        aspect-ratio: 1040/700; /* Proporção exata da imagem */
-        max-height: 60vh;
-        width: 100%;
-    }
-}
-
-/* Banner para Mobile pequeno (480px e abaixo) */
-@media (max-width: 480px) {
-    .hero-section {
-        background-image: var(--banner-mobile-small);
-        min-height: 45vh; /* Ajustado para proporção 1040x700px */
-        max-height: 55vh;
-        background-size: contain; /* Mudado para contain */
-        background-position: center center;
-        background-repeat: no-repeat;
-        margin-top: 12px !important; /* Mais um pouquinho - menor para mobile */
-        padding-top: 0 !important; /* Forçar sem padding */
-        margin-bottom: 0;
-        position: relative;
-        top: 0;
-    }
-    
-    .hero-section-responsive {
-        min-height: 45vh;
-        max-height: 55vh;
-        margin-top: 12px !important; /* Mais um pouquinho - menor para mobile */
-        padding-top: 0 !important; /* Forçar sem padding */
-        position: relative;
-        top: 0;
-    }
-    
-    .hero-bg-image {
-        object-position: center center;
-        object-fit: contain; /* Mudado para contain */
-        max-height: 55vh;
-        width: 100%;
-    }
-    
-    .hero-background {
-        aspect-ratio: 1040/700; /* Proporção exata */
-        max-height: 55vh;
-        width: 100%;
-    }
-    
-    .hero-overlay {
-        background: linear-gradient(
-            135deg,
-            rgba(0, 0, 0, 0.4) 0%,
-            rgba(0, 191, 99, 0.2) 50%,
-            rgba(0, 0, 0, 0.3) 100%
-        );
-    }
 }
 
 /* Animação de máquina de escrever */
@@ -1263,136 +513,6 @@ body {
         transform: translateY(-20px);
     }
 }
-
-/* Carro flutuante responsivo para larguras intermediárias */
-@media (max-width: 915px) {
-    .simple-floating-car {
-        padding: 1.8rem;
-        margin-top: -0.5rem;
-    }
-    
-    .floating-car-image {
-        max-width: 110%;
-        height: auto;
-    }
-}
-
-@media (max-width: 851px) {
-    .simple-floating-car {
-        padding: 1.5rem;
-        margin-top: -0.7rem;
-    }
-    
-    .floating-car-image {
-        max-width: 100%;
-        height: auto;
-    }
-}
-
-@media (max-width: 800px) {
-    .simple-floating-car {
-        padding: 1.2rem;
-        margin-top: -0.8rem;
-    }
-    
-    .floating-car-image {
-        max-width: 95%;
-        height: auto;
-    }
-}
-
-/* Carro flutuante responsivo para mobile */
-@media (max-width: 768px) {
-    .simple-floating-car {
-        padding: 0.8rem; /* Diminuído de 2rem */
-        margin-top: -1.5rem; /* Subir o carro mais */
-    }
-    
-    .floating-car-image {
-        max-width: 60%; /* Diminuído de 120% */
-        height: auto;
-    }
-}
-
-@media (max-width: 576px) {
-    .simple-floating-car {
-        padding: 0.5rem; /* Ainda menor para mobile */
-        margin-top: -3.5rem; /* Subir ainda mais para telas pequenas */
-    }
-    
-    .floating-car-image {
-        max-width: 70%; /* Ainda menor para mobile */
-        height: auto;
-    }
-    
-    @keyframes simpleFloat {
-        0%, 100% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-15px); /* Movimento menor no mobile */
-        }
-    }
-}
-
-/* Ajuste específico para tablets em modo retrato */
-@media (max-width: 768px) and (min-width: 577px) {
-    .featured-title,
-    .featured-title-typewriter {
-        font-size: 2rem !important;
-        line-height: 1.25 !important;
-    }
-    
-    .featured-text,
-    .featured-text-animated {
-        font-size: 1rem !important;
-        padding: 0 1.5rem !important;
-    }
-}
-
-/* Ajuste adicional para telas muito pequenas */
-@media (max-width: 480px) {
-    .simple-floating-car {
-        margin-top: -4rem; /* Subir mais ainda para telas pequenas */
-        padding: 0.3rem;
-    }
-    
-    /* Texto auto-digitável ainda menor */
-    .featured-title,
-    .featured-title-typewriter {
-        font-size: 1.5rem !important;
-        line-height: 1.2 !important;
-    }
-    
-    .featured-text,
-    .featured-text-animated {
-        font-size: 0.9rem !important;
-        padding: 0 0.5rem !important;
-    }
-}
-
-@media (max-width: 360px) {
-    .simple-floating-car {
-        margin-top: -4.5rem; /* Subir mais em telas muito pequenas */
-        padding: 0.2rem;
-    }
-    
-    /* Texto auto-digitável muito pequeno para telas minúsculas */
-    .featured-title,
-    .featured-title-typewriter {
-        font-size: 1.3rem !important;
-        line-height: 1.1 !important;
-        margin-bottom: 0.8rem !important;
-    }
-    
-    .featured-text,
-    .featured-text-animated {
-        font-size: 0.85rem !important;
-        padding: 0 0.3rem !important;
-        line-height: 1.5 !important;
-    }
-}
-
 /* Seções */
 .section {
     padding: 80px 0;
@@ -2084,102 +1204,6 @@ body {
     border: none;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .floating-car {
-        display: none;
-    }
-    
-    .social-sidebar {
-        right: 10px;
-    }
-    
-    .social-link {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-    
-    .about-content,
-    .contact-content {
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    .contact-content {
-        display: block;
-    }
-    
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .car-actions {
-        flex-direction: column;
-    }
-    
-    .objectives-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 576px) {
-    .section {
-        padding: 40px 0;
-    }
-    
-    /* Ajustar primeira seção de páginas internas para compensar navbar */
-    [data-page="financiamento"] .section,
-    [data-page="sobre"] .section {
-        padding-top: 90px !important;
-    }
-    
-    body:not(.home-page) .section:first-of-type {
-        padding-top: 90px !important;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .stat-number {
-        font-size: 2rem;
-    }
-    
-    .cta-title {
-        font-size: 2rem;
-    }
-}
-
-/* Regra adicional para páginas internas em mobile */
-@media (max-width: 768px) {
-    /* Aplica em todas as páginas que não têm hero-section */
-    body:not(:has(.hero-section)) .section:first-child,
-    body:not(:has(.hero-section-responsive)) .section:first-child {
-        padding-top: 100px !important;
-    }
-    
-    /* Seletor alternativo para navegadores que não suportam :has() */
-    .container .section:first-child {
-        padding-top: 100px !important;
-    }
-    
-    /* Override apenas para homepage */
-    .hero-section + .section,
-    .hero-section-responsive + .section {
-        padding-top: 80px !important;
-    }
-}
-
 /* Animações de Loading */
 .loading {
     opacity: 0;
@@ -2304,26 +1328,6 @@ textarea.form-control {
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.8);
 }
-
-/* Responsivo - ajustes das bordas */
-@media (max-width: 768px) {
-    .contact-btn {
-        border-width: 1px;
-        font-size: 1rem;
-    }
-    
-    .car-card {
-        border-width: 1px;
-    }
-    
-    .about-content {
-        padding: 1rem;
-        border-width: 1px;
-        flex-direction: column;
-        gap: 2rem;
-    }
-}
-
 /* Animações de Zoom no Rodapé */
 
 /* Links do Menu Rápido */
@@ -2412,25 +1416,6 @@ textarea.form-control {
 .social-footer-link:focus {
     animation: pulse 1.5s infinite;
     outline: none;
-}
-
-/* Responsivo para links do rodapé */
-@media (max-width: 768px) {
-    .footer-link {
-        padding: 6px 10px;
-        font-size: 0.9rem;
-    }
-    
-    .social-footer-link {
-        width: 35px;
-        height: 35px;
-        line-height: 35px;
-        font-size: 1rem;
-    }
-    
-    .social-footer-link:hover {
-        transform: scale(1.06);
-    }
 }
 
 /* Seção de Direitos e Logo */
@@ -2536,23 +1521,6 @@ textarea.form-control {
     font-size: 0.9rem;
     font-weight: 500;
     text-shadow: none;
-}
-
-/* Responsivo para dispositivos móveis */
-@media (max-width: 768px) {
-    .dev-info {
-        justify-content: center;
-        margin-top: 10px;
-    }
-    
-    .dev-logo {
-        height: 35px;
-        max-width: 100px;
-    }
-    
-    .rights-section .row > div {
-        text-align: center !important;
-    }
 }
 
 /* Animação do coração */
@@ -2762,30 +1730,174 @@ textarea.form-control {
     text-shadow: 0 0 20px rgba(191, 0, 0, 0.5);
 }
 
-/* Responsivo para seção de direitos */
-@media (max-width: 768px) {
-    .rights-section {
-        padding: 20px 0;
-        text-align: center;
-    }
-    
-    .logo-icon {
-        font-size: 2rem;
-    }
-    
-    .logo-text {
-        font-size: 1.1rem;
-    }
-    
-    .tagline {
-        font-size: 0.8rem;
-    }
-    
-    .rights-text p {
-        font-size: 0.9rem;
-    }
-    
-    .rights-text small {
-        font-size: 0.75rem;
-    }
+/* ======================================================
+   🌐 BASE (DESKTOP – já otimizado, referência principal)
+   ====================================================== */
+body {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
+
+/* Layouts principais */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Responsividade de imagens */
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Hero section */
+.hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Grid de cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* CTA buttons */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Floating car */
+.simple-floating-car {
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Botões gerais */
+button, .btn, .contact-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ======================================================
+   📌 BREAKPOINTS (Desktop → Mobile)
+   ====================================================== */
+
+/* 1) Notebooks grandes (≤1440px) */
+@media (max-width: 1440px) {
+    .container { max-width: 1200px; }
+}
+
+/* 2) Notebooks médios (≤1200px) */
+@media (max-width: 1200px) {
+    .hero-title { font-size: 3rem; }
+    .card-grid { gap: 1rem; }
+    /* ajustar espaçamentos progressivos */
+    .cta-buttons { gap: clamp(0.75rem, 1.2vw, 1rem); }
+    .bottom-contact-buttons { gap: clamp(12px, 1.8vw, 30px); }
+}
+
+/* 3) Tablets landscape (≤992px) */
+@media (max-width: 992px) {
+    /* Navbar */
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Cards em 2 colunas */
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Ajuste do título */
+    .hero-title { font-size: 2.6rem; }
+    /* melhorar espaçamento nas grades */
+    .card-grid { gap: clamp(0.75rem, 1.6vw, 1.25rem); }
+}
+
+/* 4) Tablets retrato & Smartphones grandes (≤768px) */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.2rem; }
+    .featured-text { font-size: 1rem; text-align: center; }
+
+    /* CTA empilhados */
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    /* Carro flutuante centralizado */
+    .simple-floating-car {
+        max-width: 70%;
+        margin: 1.5rem auto;
+    }
+
+    /* Ajuste de rodapé */
+    footer { text-align: center; }
+
+    /* Trocar banner para versão mobile e centralizar hero */
+    .hero-section { background: var(--banner-mobile) center/cover no-repeat; min-height: 56vh; }
+    .hero-impact-text {
+        position: relative;
+        top: auto;
+        left: 0;
+        transform: none;
+        margin: 0 auto;
+        padding: 1.2rem 1rem;
+        text-align: center;
+        max-width: 92%;
+    }
+    .bottom-contact-buttons {
+        position: relative;
+        bottom: auto;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+        gap: clamp(8px, 4vw, 18px);
+    }
+    .contact-btn { min-width: clamp(120px, 36%, 200px); font-size: clamp(0.95rem, 2.8vw, 1.2rem); }
+}
+
+/* 5) Celulares médios (≤576px) */
+@media (max-width: 576px) {
+    .hero-title { font-size: 1.8rem; }
+    .featured-text { font-size: 0.95rem; }
+
+    /* Cards em 1 coluna */
+    .card-grid { grid-template-columns: 1fr; }
+
+    /* Botões fluidos */
+    .contact-btn, .btn { width: 100%; }
+
+    /* Banner ainda mais compacto para celulares */
+    .hero-section { background: var(--banner-mobile-small) center/cover no-repeat; min-height: 50vh; }
+    .typewriter-text { font-size: clamp(1.6rem, 6vw, 2.6rem); }
+    .contact-btn { font-size: clamp(0.9rem, 3.8vw, 1.1rem); padding: clamp(8px, 2.6vw, 10px) clamp(10px, 6vw, 18px); }
+}
+
+/* 6) Celulares pequenos (≤375px) */
+@media (max-width: 375px) {
+    .hero-title { font-size: 1.5rem; }
+    .featured-text { font-size: 0.85rem; }
+    .cta-buttons { gap: 0.75rem; }
+
+    /* Pequenos ajustes finos para very-small screens */
+    .hero-impact-text { padding: 0.8rem 0.6rem; max-width: 96%; }
+    .typewriter-text { font-size: clamp(1.2rem, 7.5vw, 1.6rem); }
+    .bottom-contact-buttons { gap: 8px; }
+    .contact-btn { min-width: 110px; height: 46px; }
+}
+
+
