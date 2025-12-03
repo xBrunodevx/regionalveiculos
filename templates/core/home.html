@@ -120,9 +120,16 @@
                 <!-- Carro Flutuante Simples -->
                 <div class="simple-floating-car w-100" style="max-width: 400px;">
                     {% if carro_flutuante and carro_flutuante.imagem %}
-                        <img src="{{ carro_flutuante.imagem.url }}" alt="{{ carro_flutuante.nome }}" class="img-fluid floating-car-image mx-auto">
+                        {% comment %}Tenta usar a imagem dinâmica do banco de dados{% endcomment %}
+                        <img src="{{ carro_flutuante.imagem.url }}" 
+                             alt="{{ carro_flutuante.nome|default:'Carro em Destaque' }}" 
+                             class="img-fluid floating-car-image mx-auto"
+                             onerror="this.onerror=null; this.src='{% static 'images/imgcar.jpg' %}';">
                     {% else %}
-                        <img src="{% static 'images/imgcar.jpg' %}" alt="Carro em Destaque" class="img-fluid floating-car-image mx-auto">
+                        {% comment %}Fallback para imagem estática quando não há imagem dinâmica{% endcomment %}
+                        <img src="{% static 'images/imgcar.jpg' %}" 
+                             alt="Carro em Destaque" 
+                             class="img-fluid floating-car-image mx-auto">
                     {% endif %}
                 </div>
             </div>

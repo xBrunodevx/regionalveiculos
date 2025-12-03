@@ -9,11 +9,22 @@ def home(request):
     carros_destaque = Carro.objects.filter(destaque=True, condicao__in=['novo', 'seminovo'])[:6]
     marcas = Marca.objects.filter(ativa=True).order_by('ordem', 'nome')
     
-    # Buscar imagem do carro flutuante
-    carro_flutuante = ImagemSite.objects.filter(
-        tipo='carro_flutuante', 
-        ativo=True
-    ).order_by('ordem').first()
+    # Buscar imagem do carro flutuante (pode ser None sem problemas)
+    carro_flutuante = None
+    try:
+        carro_flutuante = ImagemSite.objects.filter(
+            tipo='carro_flutuante', 
+            ativo=True
+        ).order_by('ordem').first()
+        
+        # Se a imagem existe mas está corrompida/problemática, ignora
+        if carro_flutuante and not carro_flutuante.imagem:
+            carro_flutuante = None
+            
+    except Exception as e:
+        # Log do erro e continua sem a imagem
+        print(f"Erro ao buscar carro_flutuante: {e}")
+        carro_flutuante = None
     
     context = {
         'carros_destaque': carros_destaque,
