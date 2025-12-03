@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-ik-#*9^44ixh!88!%(y7ime=zzyjk4pqcoe9d-tsc^5rzpy^(&')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)  # Temporariamente True para debug
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,[::1],testserver,*.onrender.com,regional-veiculos.onrender.com,*').split(',')
 
@@ -92,10 +92,16 @@ WSGI_APPLICATION = 'regional_veiculos.wsgi.application'
 import dj_database_url
 
 # Database configuration
-if config('DATABASE_URL', default=None):
+DATABASE_URL = config('DATABASE_URL', default=None)
+
+if DATABASE_URL:
     # Production with PostgreSQL
     DATABASES = {
-        'default': dj_database_url.parse(config('DATABASE_URL'))
+        'default': dj_database_url.parse(DATABASE_URL)
+    }
+    # Adicionar configurações SSL para PostgreSQL em produção
+    DATABASES['default']['OPTIONS'] = {
+        'sslmode': 'require',
     }
 else:
     # Development with SQLite
@@ -190,3 +196,30 @@ else:
     # Development settings
     CSRF_COOKIE_SECURE = False
     SESSION_COOKIE_SECURE = False
+
+# Logging configuration for debugging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG' if DEBUG else 'INFO',
+            'propagate': False,
+        },
+    },
+}
