@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializar lazy loading para imagens
     initLazyLoading();
+    
+    // Inicializar otimizações mobile
+    initMobileOptimizations();
 });
 
 // Navbar transparente que fica vermelha no scroll
@@ -365,6 +368,125 @@ function initPageSpecific() {
             initFormValidation();
             break;
     }
+}
+
+// Otimizações específicas para mobile
+function initMobileOptimizations() {
+    // Detectar se é dispositivo móvel
+    const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        console.log('Dispositivo móvel detectado - aplicando otimizações');
+        
+        // Melhorar performance do scroll
+        let ticking = false;
+        const navbar = document.querySelector('.navbar');
+        
+        function updateNavbar() {
+            if (window.scrollY > 50) {
+                navbar?.classList.add('scrolled');
+            } else {
+                navbar?.classList.remove('scrolled');
+            }
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateNavbar);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick, { passive: true });
+        
+        // Touch feedback para botões
+        const buttons = document.querySelectorAll('.btn, .contact-btn, .nav-link');
+        buttons.forEach(button => {
+            button.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            }, { passive: true });
+            
+            button.addEventListener('touchend', function() {
+                this.style.transform = '';
+            }, { passive: true });
+        });
+        
+        // Otimizar formulários para mobile
+        const inputs = document.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            // Prevenir zoom no iOS
+            input.addEventListener('focus', function() {
+                this.style.fontSize = '16px';
+            });
+            
+            // Melhorar UX em touch
+            input.addEventListener('touchstart', function() {
+                this.style.borderColor = '#dc3545';
+            }, { passive: true });
+        });
+        
+        // Fechar menu mobile ao clicar em link
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (navbarCollapse?.classList.contains('show')) {
+                    navbarToggler?.click();
+                }
+            });
+        });
+        
+        // Lazy loading melhorado para mobile
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('loading');
+                            imageObserver.unobserve(img);
+                        }
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+            
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+        
+        // Melhorar performance de animações em mobile
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (prefersReducedMotion.matches) {
+            document.documentElement.style.setProperty('--transicao-rapida', '0s');
+            document.documentElement.style.setProperty('--transicao-media', '0s');
+            document.documentElement.style.setProperty('--transicao-lenta', '0s');
+        }
+    }
+    
+    // Orientação da tela
+    function handleOrientationChange() {
+        setTimeout(() => {
+            // Recalcular altura da viewport
+            document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+            
+            // Forçar reflow para ajustar layout
+            window.dispatchEvent(new Event('resize'));
+        }, 100);
+    }
+    
+    window.addEventListener('orientationchange', handleOrientationChange);
+    window.addEventListener('resize', handleOrientationChange);
+    
+    // Configurar altura da viewport para mobile
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }
 
 // Chamar inicializações específicas da página

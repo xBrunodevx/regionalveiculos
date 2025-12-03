@@ -70,6 +70,13 @@ body {
     line-height: 1.6;
     padding-top: 0; /* Remover padding para navbar sobrepor o banner */
     scroll-behavior: smooth;
+    /* Otimizações Mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Melhorar performance em touch devices */
+    -webkit-overflow-scrolling: touch;
+    touch-action: manipulation;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1827,6 +1834,12 @@ button, .btn, .contact-btn {
 
 /* 4) Tablets retrato & Smartphones grandes (≤768px) */
 @media (max-width: 768px) {
+    /* Navbar mobile otimizada */
+    .navbar { padding: 0.5rem 1rem; }
+    .navbar-brand { font-size: 1.3rem; }
+    .navbar-nav .nav-link { padding: 0.75rem 1rem; font-size: 1.1rem; }
+    .navbar-toggler { padding: 0.4rem 0.5rem; }
+    
     .hero-title { font-size: 2.2rem; }
     .featured-text { font-size: 1rem; text-align: center; }
 
@@ -1875,8 +1888,32 @@ button, .btn, .contact-btn {
     .hero-title { font-size: 1.8rem; }
     .featured-text { font-size: 0.95rem; }
 
-    /* Cards em 1 coluna */
-    .card-grid { grid-template-columns: 1fr; }
+    /* Cards em 1 coluna com melhor espaçamento */
+    .card-grid { 
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        margin-bottom: 1rem;
+    }
+    
+    .card-body {
+        padding: 1.25rem;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .card-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
 
     /* Botões fluidos */
     .contact-btn, .btn { width: 100%; }
@@ -1885,6 +1922,24 @@ button, .btn, .contact-btn {
     .hero-section { background: var(--banner-mobile-small) center/cover no-repeat; min-height: 50vh; }
     .typewriter-text { font-size: clamp(1.6rem, 6vw, 2.6rem); }
     .contact-btn { font-size: clamp(0.9rem, 3.8vw, 1.1rem); padding: clamp(8px, 2.6vw, 10px) clamp(10px, 6vw, 18px); }
+    
+    /* Formulários mobile otimizados */
+    .form-control {
+        font-size: 16px; /* Evitar zoom no iOS */
+        padding: 0.75rem;
+        border-radius: 8px;
+    }
+    
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+    
+    .btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        min-height: 48px; /* Touch target adequado */
+    }
 }
 
 /* 6) Celulares pequenos (≤375px) */
@@ -1900,4 +1955,98 @@ button, .btn, .contact-btn {
     .contact-btn { min-width: 110px; height: 46px; }
 }
 
+/* 🔥 MOBILE-FIRST IMPROVEMENTS */
 
+/* Touch targets adequados (mínimo 44px) */
+.btn, .nav-link, .contact-btn, .social-link {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover states apenas em dispositivos que suportam hover */
+@media (hover: hover) and (pointer: fine) {
+    .btn:hover, .card:hover, .nav-link:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* Melhor experiência em touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .btn, .card, .nav-link {
+        transition: background-color 0.2s ease;
+    }
+    
+    .btn:active, .nav-link:active {
+        transform: scale(0.98);
+        background-color: rgba(0,0,0,0.1);
+    }
+}
+
+/* Scroll suave em dispositivos móveis */
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 80px;
+    }
+    
+    /* Melhor legibilidade em mobile */
+    .featured-text, .card-text {
+        line-height: 1.6;
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
+    }
+    
+    /* Estoque: melhor visualização dos carros */
+    .car-card {
+        box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    .car-card img {
+        aspect-ratio: 16/10;
+        object-fit: cover;
+    }
+    
+    /* Paginação mobile */
+    .pagination {
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .page-link {
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+}
+
+/* Orientação portrait específica */
+@media screen and (orientation: portrait) and (max-width: 768px) {
+    .hero-section {
+        min-height: 60vh;
+    }
+    
+    .typewriter-text {
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Landscape mobile específico */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .hero-section {
+        min-height: 80vh;
+    }
+    
+    .hero-impact-text {
+        top: 20%;
+    }
+    
+    .navbar {
+        padding: 0.25rem 1rem;
+    }
+}
