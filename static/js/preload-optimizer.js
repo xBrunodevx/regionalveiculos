@@ -85,17 +85,9 @@ const preloadOpt = new PreloadOptimizer();
 document.addEventListener('DOMContentLoaded', () => {
     preloadOpt.optimizeExistingPreloads();
     
-    // Fazer preloads inteligentes baseados no conteúdo da página
-    setTimeout(() => {
-        // Logo apenas se estiver na navbar
-        const hasNavbar = document.querySelector('.navbar');
-        preloadOpt.smartPreload('/static/images/logo-regional-veiculos.png', 'image', hasNavbar);
-        
-        // Outras imagens críticas apenas se houver elementos que as usam
-        const hasCarousel = document.querySelector('.brands-carousel');
-        const hasFloatingCar = document.querySelector('.floating-car-image');
-        
-    }, 500);
+    // DESABILITADO: Preloads automáticos para evitar warnings
+    // Imagens serão carregadas sob demanda apenas
+    console.log('[Preload] Modo conservador ativo - sem preloads automáticos');
 });
 
 // Executar otimização após carregamento completo
