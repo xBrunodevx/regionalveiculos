@@ -1,14 +1,14 @@
 services:
   - type: web
     name: regional-veiculos
-    env: python
+    runtime: python
     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate"
     startCommand: "gunicorn regional_veiculos.wsgi:application"
     envVars:
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
-        value: False
+        value: "False"
       - key: ALLOWED_HOSTS
         value: "*"
       - key: DATABASE_URL
@@ -18,7 +18,5 @@ services:
       - key: DJANGO_SETTINGS_MODULE
         value: regional_veiculos.settings
 
-  - type: postgresql
-    name: regional-veiculos-db
-    databaseName: regional_veiculos
-    user: postgres
+databases:
+  - name: regional-veiculos-db

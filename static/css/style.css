@@ -8,6 +8,16 @@
     color: #fff !important;
     box-shadow: none !important;
 }
+
+/* REGRA GLOBAL: Ocultar botões de contato em mobile */
+@media (max-width: 768px) {
+    .bottom-contact-buttons,
+    .contact-btn {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}
 /* Forçar botão WhatsApp verde na página de contato */
 .social-links .btn-outline-success {
     color: #25d366 !important;
@@ -1801,6 +1811,19 @@ button, .btn, .contact-btn {
    📌 BREAKPOINTS (Desktop → Mobile)
    ====================================================== */
 
+/* 0) Telas menores que 1920px - Notebooks, tablets grandes */
+@media (max-width: 1919px) {
+    /* Ocultar texto auto-digitável e botões em telas menores que 1920px */
+    .hero-impact-text,
+    .typewriter-text,
+    .bottom-contact-buttons,
+    .contact-btn {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}
+
 /* 1) Notebooks grandes (≤1440px) */
 @media (max-width: 1440px) {
     .container { max-width: 1200px; }
@@ -1834,6 +1857,27 @@ button, .btn, .contact-btn {
 
 /* 4) Tablets retrato & Smartphones grandes (≤768px) */
 @media (max-width: 768px) {
+    /* Body e html sem margin/padding */
+    body, html {
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-x: hidden;
+    }
+    
+    /* Hero section full width absoluto em mobile */
+    .hero-section {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        position: relative;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        box-sizing: border-box;
+    }
+    
     /* Navbar mobile otimizada */
     .navbar { padding: 0.5rem 1rem; }
     .navbar-brand { font-size: 1.3rem; }
@@ -1860,27 +1904,28 @@ button, .btn, .contact-btn {
     footer { text-align: center; }
 
     /* Trocar banner para versão mobile e centralizar hero */
-    .hero-section { background: var(--banner-mobile) center/cover no-repeat; min-height: 56vh; }
+    .hero-section { 
+        background: var(--banner-mobile) center/cover no-repeat; 
+        min-height: 56vh; 
+    }
+    
+    /* Texto digitável em faixa vermelha mobile */
     .hero-impact-text {
-        position: relative;
-        top: auto;
-        left: 0;
-        transform: none;
-        margin: 0 auto;
-        padding: 1.2rem 1rem;
-        text-align: center;
-        max-width: 92%;
+        display: none !important; /* Oculta completamente o texto em mobile */
     }
+    
+    .typewriter-text {
+        display: none !important; /* Oculta completamente o texto em mobile */
+    }
+    
     .bottom-contact-buttons {
-        position: relative;
-        bottom: auto;
-        left: 0;
-        width: 100%;
-        justify-content: center;
-        margin-top: 1rem;
-        gap: clamp(8px, 4vw, 18px);
+        display: none !important; /* Oculta todo o container dos botões */
     }
-    .contact-btn { min-width: clamp(120px, 36%, 200px); font-size: clamp(0.95rem, 2.8vw, 1.2rem); }
+    
+    /* Botões muito menores em mobile */
+    .contact-btn { 
+        display: none !important; /* Oculta completamente os botões em mobile */
+    }
 }
 
 /* 5) Celulares médios (≤576px) */
@@ -1917,11 +1962,15 @@ button, .btn, .contact-btn {
 
     /* Botões fluidos */
     .contact-btn, .btn { width: 100%; }
-
-    /* Banner ainda mais compacto para celulares */
-    .hero-section { background: var(--banner-mobile-small) center/cover no-repeat; min-height: 50vh; }
-    .typewriter-text { font-size: clamp(1.6rem, 6vw, 2.6rem); }
-    .contact-btn { font-size: clamp(0.9rem, 3.8vw, 1.1rem); padding: clamp(8px, 2.6vw, 10px) clamp(10px, 6vw, 18px); }
+    
+    /* Ocultar botões de contato completamente */
+    .bottom-contact-buttons {
+        display: none !important;
+    }
+    
+    .contact-btn { 
+        display: none !important; /* Oculta completamente os botões em celulares */
+    }
     
     /* Formulários mobile otimizados */
     .form-control {
@@ -1944,15 +1993,37 @@ button, .btn, .contact-btn {
 
 /* 6) Celulares pequenos (≤375px) */
 @media (max-width: 375px) {
+    /* Hero section full width para celulares pequenos */
+    .hero-section {
+        width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative;
+        left: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+    }
     .hero-title { font-size: 1.5rem; }
     .featured-text { font-size: 0.85rem; }
     .cta-buttons { gap: 0.75rem; }
 
-    /* Pequenos ajustes finos para very-small screens */
-    .hero-impact-text { padding: 0.8rem 0.6rem; max-width: 96%; }
-    .typewriter-text { font-size: clamp(1.2rem, 7.5vw, 1.6rem); }
-    .bottom-contact-buttons { gap: 8px; }
-    .contact-btn { min-width: 110px; height: 46px; }
+    /* Ajustes para celulares pequenos */
+    .hero-impact-text { 
+        display: none !important; /* Oculta completamente */
+    }
+    
+    .typewriter-text {
+        display: none !important; /* Oculta completamente */
+    }
+    
+    .bottom-contact-buttons { 
+        display: none !important; /* Oculta completamente o container */
+    }
+    
+    /* Botões minúsculos para celulares pequenos */
+    .contact-btn { 
+        display: none !important; /* Oculta completamente os botões em celulares pequenos */
+    }
 }
 
 /* 🔥 MOBILE-FIRST IMPROVEMENTS */

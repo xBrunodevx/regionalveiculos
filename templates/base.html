@@ -153,7 +153,10 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"></noscript>
     
     <!-- CSS -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}?v={{ current_timestamp }}" rel="stylesheet">
+    
+    <!-- Force Cache Clear for Development -->
+    <script src="{% static 'js/force-cache-clear.js' %}"></script>
     
     {% block extra_css %}{% endblock %}
 </head>
