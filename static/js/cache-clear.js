@@ -23,14 +23,34 @@ if ('serviceWorker' in navigator && 'caches' in window) {
     });
 }
 
-// Clear browser cache for static resources
+// Clear browser cache for static resources - Otimizado
 const clearImageCache = () => {
-    // Remove preload links for unused images
-    const preloadLinks = document.querySelectorAll('link[rel="preload"][as="image"]');
+    // Remove preload links para imagens não utilizadas
+    const preloadLinks = document.querySelectorAll('link[rel="preload"]');
     preloadLinks.forEach(link => {
-        if (link.href.includes('imagemcarr.jpg')) {
-            link.remove();
-            console.log('[Cache Clear] Removed unused preload:', link.href);
+        // Verificar se a imagem/recurso está sendo usado
+        const href = link.href;
+        
+        // Para imagens, verificar se há elementos img usando o recurso
+        if (link.getAttribute('as') === 'image') {
+            const isUsed = Array.from(document.querySelectorAll('img')).some(img => 
+                img.src && img.src.includes(href.split('/').pop())
+            );
+            
+            if (!isUsed) {
+                console.log('[Cache Clear] Removed unused image preload:', href);
+                link.remove();
+            }
+        }
+        
+        // Para CSS, verificar se foi carregado há mais de 5 segundos
+        if (link.getAttribute('as') === 'style' && link.hasAttribute('onload')) {
+            setTimeout(() => {
+                if (document.head.contains(link) && !document.querySelector(`link[href="${href}"][rel="stylesheet"]`)) {
+                    console.log('[Cache Clear] Removed unused style preload:', href);
+                    link.remove();
+                }
+            }, 5000);
         }
     });
 };

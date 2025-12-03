@@ -33,20 +33,32 @@
         });
     }
     
-    // Preload de recursos críticos
+    // Preload de recursos críticos - Otimizado
     function preloadCriticalResources() {
-        const criticalImages = [
-            // Removido imagemcarr.jpg pois não é usado nos templates
-            '/static/images/logo-regional-veiculos.png' // Logo
-        ];
+        // Apenas fazer preload se as imagens estão realmente sendo usadas na página
+        const criticalImages = [];
         
-        criticalImages.forEach(src => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = src;
-            document.head.appendChild(link);
-        });
+        // Verificar se o logo está sendo usado antes de fazer preload
+        const logoElements = document.querySelectorAll('img[src*="logo-regional-veiculos"]');
+        if (logoElements.length > 0) {
+            criticalImages.push('/static/images/logo-regional-veiculos.png');
+        }
+        
+        // Só fazer preload se há imagens para carregar
+        if (criticalImages.length > 0) {
+            criticalImages.forEach(src => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                // Adicionar timeout para evitar warning de não uso
+                setTimeout(() => {
+                    if (document.head.contains(link)) {
+                        document.head.appendChild(link);
+                    }
+                }, 100);
+            });
+        }
     }
     
     // Otimização de fontes
