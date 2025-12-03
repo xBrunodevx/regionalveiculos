@@ -16,7 +16,7 @@ User = get_user_model()
 # Dados do superusuário
 username = 'admin'
 email = 'admin@regionalveiculos.com'
-password = 'Admin@2024!'
+password = 'RegionalVeiculos2024!'  # Nova senha mais segura
 
 # Verificar se o usuário já existe
 if User.objects.filter(username=username).exists():

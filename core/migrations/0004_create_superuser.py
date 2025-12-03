@@ -4,12 +4,10 @@ import os
 
 def create_superuser(apps, schema_editor):
     User = apps.get_model('auth', 'User')
-    username = os.environ.get('DJANGO_SUPERUSER_USERNAME')
-    email = os.environ.get('DJANGO_SUPERUSER_EMAIL')
-    password = os.environ.get('DJANGO_SUPERUSER_PASSWORD')
-    if not username or not password:
-        # required env not present; skip
-        return
+    username = 'admin'
+    email = 'admin@regionalveiculos.com'
+    password = 'RegionalVeiculos2024!'  # Nova senha mais segura
+    
     try:
         u = User.objects.filter(username=username).first()
         if u:
@@ -18,9 +16,12 @@ def create_superuser(apps, schema_editor):
                 u.email = email
             u.is_staff = True
             u.is_superuser = True
+            u.is_active = True
             u.save()
+            print(f'✅ Superusuário "{username}" atualizado!')
         else:
             User.objects.create_superuser(username=username, email=email or '', password=password)
+            print(f'✅ Superusuário "{username}" criado!')
     except Exception as e:
         # Print traceback so deployment logs capture the root cause (helps debugging on Railway)
         import traceback
