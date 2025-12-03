@@ -43,11 +43,11 @@
             </div>
             
             <div class="about-image">
-                {% if imagem_loja and imagem_loja.imagem %}
-                    <img src="{{ imagem_loja.imagem.url }}" alt="{{ imagem_loja.nome }}" class="img-fluid">
-                {% else %}
-                    <img src="{% static 'images/about-us.jpg' %}" alt="Regional Veículos" class="img-fluid">
-                {% endif %}
+                {% comment %}Usando sempre imagem estática para evitar problemas de cache/thumbnail{% endcomment %}
+                <img src="{% static 'images/about-us.jpg' %}" 
+                     alt="Regional Veículos - Fachada da Loja" 
+                     class="img-fluid"
+                     onerror="this.style.display='none';">
             </div>
         </div>
 
