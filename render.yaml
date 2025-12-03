@@ -17,7 +17,13 @@ services:
           name: regional-veiculos-db
           property: connectionString
       - key: DJANGO_SETTINGS_MODULE
-        value: regional_veiculos.settings
+        value: regional_veiculos.settings_render
+      - key: CLOUDINARY_CLOUD_NAME
+        value: "regional-veiculos"
+      - key: CLOUDINARY_API_KEY
+        value: "CONFIGURE_NO_PAINEL_RENDER"
+      - key: CLOUDINARY_API_SECRET
+        value: "CONFIGURE_NO_PAINEL_RENDER"
 
 databases:
   - name: regional-veiculos-db

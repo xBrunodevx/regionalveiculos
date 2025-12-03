@@ -1,11 +1,17 @@
 from django.db import models
 from django.urls import reverse
+from .validators import validate_image_file
 
 
 class Marca(models.Model):
     """Modelo para representar marcas de carros"""
     nome = models.CharField(max_length=50, unique=True, verbose_name='Nome da Marca')
-    logo = models.ImageField(upload_to='marcas/', verbose_name='Logo da Marca')
+    logo = models.ImageField(
+        upload_to='marcas/', 
+        verbose_name='Logo da Marca',
+        validators=[validate_image_file],
+        help_text='Formatos: JPG, PNG, GIF, BMP, WEBP, SVG, TIFF (máx. 10MB)'
+    )
     ativa = models.BooleanField(default=True, verbose_name='Marca Ativa')
     ordem = models.IntegerField(default=0, verbose_name='Ordem de Exibição')
     
@@ -44,10 +50,36 @@ class Carro(models.Model):
     
     # Descrição e imagens
     descricao = models.TextField(verbose_name='Descrição')
-    imagem_principal = models.ImageField(upload_to='carros/', verbose_name='Imagem Principal')
-    imagem_2 = models.ImageField(upload_to='carros/', blank=True, null=True, verbose_name='Imagem 2')
-    imagem_3 = models.ImageField(upload_to='carros/', blank=True, null=True, verbose_name='Imagem 3')
-    imagem_4 = models.ImageField(upload_to='carros/', blank=True, null=True, verbose_name='Imagem 4')
+    imagem_principal = models.ImageField(
+        upload_to='carros/', 
+        verbose_name='Imagem Principal',
+        validators=[validate_image_file],
+        help_text='Formatos: JPG, PNG, GIF, BMP, WEBP, SVG, TIFF (máx. 10MB)'
+    )
+    imagem_2 = models.ImageField(
+        upload_to='carros/', 
+        blank=True, 
+        null=True, 
+        verbose_name='Imagem 2',
+        validators=[validate_image_file],
+        help_text='Formatos: JPG, PNG, GIF, BMP, WEBP, SVG, TIFF (máx. 10MB)'
+    )
+    imagem_3 = models.ImageField(
+        upload_to='carros/', 
+        blank=True, 
+        null=True, 
+        verbose_name='Imagem 3',
+        validators=[validate_image_file],
+        help_text='Formatos: JPG, PNG, GIF, BMP, WEBP, SVG, TIFF (máx. 10MB)'
+    )
+    imagem_4 = models.ImageField(
+        upload_to='carros/', 
+        blank=True, 
+        null=True, 
+        verbose_name='Imagem 4',
+        validators=[validate_image_file],
+        help_text='Formatos: JPG, PNG, GIF, BMP, WEBP, SVG, TIFF (máx. 10MB)'
+    )
     
     # Metadados
     criado_em = models.DateTimeField(auto_now_add=True)
