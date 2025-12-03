@@ -4,13 +4,18 @@ import os
 
 def create_superuser(apps, schema_editor):
     User = apps.get_model('auth', 'User')
-    username = 'admin'
-    email = 'admin@regionalveiculos.com'
-    password = 'RegionalVeiculos2024!'  # Nova senha mais segura
+    username = os.environ.get('DJANGO_SUPERUSER_USERNAME')
+    email = os.environ.get('DJANGO_SUPERUSER_EMAIL')
+    password = os.environ.get('DJANGO_SUPERUSER_PASSWORD')
     
+    if not username or not password:
+        print('⚠️ Variáveis de ambiente do superusuário não encontradas, pulando criação...')
+        return
+        
     try:
         u = User.objects.filter(username=username).first()
         if u:
+            print(f'🔄 Atualizando superusuário "{username}"...')
             u.set_password(password)
             if email:
                 u.email = email
@@ -18,16 +23,15 @@ def create_superuser(apps, schema_editor):
             u.is_superuser = True
             u.is_active = True
             u.save()
-            print(f'✅ Superusuário "{username}" atualizado!')
+            print(f'✅ Superusuário "{username}" atualizado com sucesso!')
         else:
+            print(f'🆕 Criando superusuário "{username}"...')
             User.objects.create_superuser(username=username, email=email or '', password=password)
-            print(f'✅ Superusuário "{username}" criado!')
+            print(f'✅ Superusuário "{username}" criado com sucesso!')
     except Exception as e:
-        # Print traceback so deployment logs capture the root cause (helps debugging on Railway)
         import traceback
-        print('ERROR creating/updating superuser:', e)
+        print('❌ ERROR creating/updating superuser:', e)
         traceback.print_exc()
-        # don't re-raise to avoid failing the whole migration; operator can inspect logs
         return
 
 
