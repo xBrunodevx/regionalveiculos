@@ -27,21 +27,8 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # CONFIGURAÇÃO CLOUDINARY PARA MÍDIA
-# Configuração do Cloudinary usando variáveis de ambiente
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'regional-veiculos'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
-    'SECURE': True,
-}
-
-# Configurar Cloudinary
-cloudinary.config(
-    cloud_name=CLOUDINARY_STORAGE['CLOUD_NAME'],
-    api_key=CLOUDINARY_STORAGE['API_KEY'],
-    api_secret=CLOUDINARY_STORAGE['API_SECRET'],
-    secure=True
-)
+# Usando CLOUDINARY_URL (mais simples)
+CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 
 # Storage para arquivos de mídia
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
