@@ -99,8 +99,24 @@ def detalhe_carro(request, pk):
 
 def sobre(request):
     """View da página sobre"""
-    # Usando apenas dados estáticos para evitar problemas de imagem
+    # Buscar imagem da loja para a página sobre
+    imagem_loja = None
+    try:
+        imagem_loja = ImagemSite.objects.filter(
+            tipo='sobre_loja', 
+            ativo=True
+        ).order_by('ordem').first()
+        
+        # Se a imagem existe mas está corrompida/problemática, ignora
+        if imagem_loja and not imagem_loja.imagem:
+            imagem_loja = None
+            
+    except Exception as e:
+        print(f"Erro ao buscar imagem_loja: {e}")
+        imagem_loja = None
+    
     context = {
+        'imagem_loja': imagem_loja,
         'anos_experiencia': 15,
         'carros_vendidos': 800,
         'clientes_satisfeitos': 500,

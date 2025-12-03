@@ -117,16 +117,15 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6 mb-4 mb-lg-0 d-flex justify-content-center align-items-center">
-                <!-- Carro Flutuante Simples -->
+                <!-- Carro Flutuante Dinâmico do Django -->
                 <div class="simple-floating-car w-100" style="max-width: 400px;">
                     {% if carro_flutuante and carro_flutuante.imagem %}
-                        {% comment %}Tenta usar a imagem dinâmica do banco de dados{% endcomment %}
                         <img src="{{ carro_flutuante.imagem.url }}" 
                              alt="{{ carro_flutuante.nome|default:'Carro em Destaque' }}" 
                              class="img-fluid floating-car-image mx-auto"
                              onerror="this.onerror=null; this.src='{% static 'images/imgcar.jpg' %}';">
                     {% else %}
-                        {% comment %}Fallback para imagem estática quando não há imagem dinâmica{% endcomment %}
+                        <!-- Fallback para imagem estática quando não há no Django -->
                         <img src="{% static 'images/imgcar.jpg' %}" 
                              alt="Carro em Destaque" 
                              class="img-fluid floating-car-image mx-auto">

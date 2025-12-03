@@ -46,11 +46,11 @@ class CarroAdmin(admin.ModelAdmin):
 
 @admin.register(ImagemSite)
 class ImagemSiteAdmin(admin.ModelAdmin):
-    list_display = ['nome', 'tipo', 'ativo', 'ordem', 'data_criacao']
+    list_display = ['nome', 'tipo', 'ativo', 'ordem', 'data_criacao', 'preview_image']
     list_filter = ['tipo', 'ativo', 'data_criacao']
     search_fields = ['nome', 'descricao']
     list_editable = ['ativo', 'ordem']
-    readonly_fields = ['data_criacao']
+    readonly_fields = ['data_criacao', 'preview_image']
     
     fieldsets = (
         ('Informações Básicas', {
@@ -59,8 +59,21 @@ class ImagemSiteAdmin(admin.ModelAdmin):
         ('Detalhes', {
             'fields': ('descricao', 'ordem')
         }),
-        ('Sistema', {
-            'fields': ('data_criacao',),
+        ('Preview & Sistema', {
+            'fields': ('preview_image', 'data_criacao'),
             'classes': ('collapse',)
         }),
     )
+    
+    def preview_image(self, obj):
+        """Mostra preview da imagem no admin"""
+        if obj.imagem:
+            return f'<img src="{obj.imagem.url}" style="max-width: 150px; max-height: 100px;" />'
+        return "Sem imagem"
+    preview_image.allow_tags = True
+    preview_image.short_description = "Preview"
+    
+    class Media:
+        css = {
+            'all': ('admin/css/forms.css',)
+        }

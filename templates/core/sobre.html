@@ -43,11 +43,18 @@
             </div>
             
             <div class="about-image">
-                {% comment %}Usando sempre imagem estática para evitar problemas de cache/thumbnail{% endcomment %}
-                <img src="{% static 'images/about-us.jpg' %}" 
-                     alt="Regional Veículos - Fachada da Loja" 
-                     class="img-fluid"
-                     onerror="this.style.display='none';">
+                {% if imagem_loja and imagem_loja.imagem %}
+                    <!-- Imagem dinâmica do Django -->
+                    <img src="{{ imagem_loja.imagem.url }}" 
+                         alt="{{ imagem_loja.nome|default:'Regional Veículos' }}" 
+                         class="img-fluid"
+                         onerror="this.onerror=null; this.src='{% static 'images/about-us.jpg' %}';">
+                {% else %}
+                    <!-- Fallback para imagem estática -->
+                    <img src="{% static 'images/about-us.jpg' %}" 
+                         alt="Regional Veículos - Fachada da Loja" 
+                         class="img-fluid">
+                {% endif %}
             </div>
         </div>
 
