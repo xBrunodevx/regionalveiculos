@@ -36,7 +36,7 @@
     // Preload de recursos críticos
     function preloadCriticalResources() {
         const criticalImages = [
-            '/static/images/imagemcarr.jpg', // Banner principal
+            // Removido imagemcarr.jpg pois não é usado nos templates
             '/static/images/logo-regional-veiculos.png' // Logo
         ];
         

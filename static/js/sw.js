@@ -1,7 +1,7 @@
 // Service Worker - Cache Strategy
 // Regional Veículos - Cache e Performance
 
-const CACHE_NAME = 'regional-veiculos-v1.0.0';
+const CACHE_NAME = 'regional-veiculos-v1.0.1';
 const urlsToCache = [
     '/',
     '/estoque/',
@@ -12,7 +12,7 @@ const urlsToCache = [
     '/static/js/main.js',
     '/static/js/analytics.js',
     '/static/js/performance.js',
-    '/static/images/imagemcarr.jpg',
+    // Removido imagemcarr.jpg pois não é usado nos templates
     '/static/images/logo-regional-veiculos.png',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js',
