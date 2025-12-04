@@ -19,7 +19,7 @@
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
     <meta property="og:title" content="{% block og_title %}Regional Veículos - Carros Seminovos{% endblock %}">
     <meta property="og:description" content="{% block og_description %}Encontre o carro ideal na Regional Veículos. Seminovos selecionados com garantia.{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo-regional-veiculos.png' %}{% endblock %}">
+    {# <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo-regional-veiculos.png' %}{% endblock %}"> #}
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Regional Veículos">
     
@@ -30,8 +30,8 @@
     
     <!-- Icons -->
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-    <link rel="icon" href="{% static 'images/favicon-32x32.png' %}" sizes="32x32" type="image/png">
-    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+    {# <link rel="icon" href="{% static 'images/favicon-32x32.png' %}" sizes="32x32" type="image/png"> #}
+    {# <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}"> #}
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +53,7 @@
         "@context": "https://schema.org",
         "@type": "AutoDealer",
         "name": "Regional Veículos",
-        "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo-regional-veiculos.png' %}",
+        {# "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo-regional-veiculos.png' %}", #}
         "description": "Concessionária especializada em carros seminovos com qualidade e garantia",
         "url": "{{ request.build_absolute_uri }}",
         "telephone": "+55-11-1234-5678",
@@ -81,8 +81,8 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand text-white fw-bold" href="{% url 'core:home' %}">
-                <img src="{% static 'images/logo-regional-veiculos.png' %}" alt="Regional Veículos" height="40" class="me-2">
-                Regional Veículos
+                {# <img src="{% static 'images/logo-regional-veiculos.png' %}" alt="Regional Veículos" height="40" class="me-2"> #}
+                <strong>Regional Veículos</strong>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

@@ -62,7 +62,7 @@
     ]
   },
   "image": [
-    {% if carro.imagem %}"{{ request.scheme }}://{{ request.get_host }}{{ carro.imagem.url }}"{% else %}"{{ request.scheme }}://{{ request.get_host }}{% static 'images/carro-padrao.jpg' %}"{% endif %}
+    {% if carro.imagem_principal %}"{{ request.scheme }}://{{ request.get_host }}{{ carro.imagem_principal.url }}"{% endif %}
   ],
   "vehicleIdentificationNumber": "{{ carro.id }}",
   "manufacturer": {
