@@ -44,16 +44,16 @@
             
             <div class="about-image">
                 {% if imagem_loja and imagem_loja.imagem %}
-                    <!-- Imagem dinâmica do Django -->
+                    <!-- Imagem da loja - APENAS DJANGO -->
                     <img src="{{ imagem_loja.imagem.url }}" 
                          alt="{{ imagem_loja.nome|default:'Regional Veículos' }}" 
-                         class="img-fluid"
-                         onerror="this.onerror=null; this.src='{% static 'images/about-us.jpg' %}';">
-                {% else %}
-                    <!-- Fallback para imagem estática -->
-                    <img src="{% static 'images/about-us.jpg' %}" 
-                         alt="Regional Veículos - Fachada da Loja" 
                          class="img-fluid">
+                {% else %}
+                    <!-- Sem imagem disponível - admin deve configurar -->
+                    <div class="alert alert-info text-center">
+                        <i class="fas fa-building fa-2x mb-2"></i>
+                        <p>Configure uma imagem do tipo "Imagem da Loja" no admin Django</p>
+                    </div>
                 {% endif %}
             </div>
         </div>

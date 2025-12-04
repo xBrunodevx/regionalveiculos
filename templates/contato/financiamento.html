@@ -24,7 +24,9 @@
                             {% if carro.imagem_principal %}
                                 <img src="{{ carro.imagem_principal.url }}" alt="{{ carro.modelo }}" class="img-fluid rounded" style="max-width: 120px;">
                             {% else %}
-                                <img src="{% static 'images/imgcar.jpg' %}" alt="{{ carro.modelo }}" class="img-fluid rounded" style="max-width: 120px;">
+                                <div class="text-center p-2 bg-light rounded" style="max-width: 120px;height:80px;display:flex;align-items:center;justify-content:center;">
+                                    <i class="fas fa-car text-muted"></i>
+                                </div>
                             {% endif %}
                         </div>
                         <div class="col-12 col-md-9 text-center text-md-start">

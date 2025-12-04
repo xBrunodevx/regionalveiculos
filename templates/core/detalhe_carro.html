@@ -13,7 +13,7 @@
 
 {% block og_type %}product{% endblock %}
 
-{% block og_image %}{% if carro.imagem %}{{ request.scheme }}://{{ request.get_host }}{{ carro.imagem.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/carro-padrao.jpg' %}{% endif %}{% endblock %}
+{% block og_image %}{% if carro.imagem_principal %}{{ request.scheme }}://{{ request.get_host }}{{ carro.imagem_principal.url }}{% endif %}{% endblock %}
 
 {% block extra_css %}
 <script type="application/ld+json">
@@ -302,7 +302,9 @@
                         {% if carro.imagem_principal %}
                             <img src="{{ carro.imagem_principal.url }}" alt="{{ carro.modelo }}" class="img-fluid rounded" id="mainImage">
                         {% else %}
-                            <img src="{% static 'images/imgcar.jpg' %}" alt="{{ carro.modelo }}" class="img-fluid rounded" id="mainImage">
+                            <div class="text-center p-5 bg-light rounded" style="min-height:400px;display:flex;align-items:center;justify-content:center;">
+                                <div><i class="fas fa-car fa-4x text-muted mb-3"></i><br><h5 class="text-muted">Sem Imagem Disponível</h5></div>
+                            </div>
                         {% endif %}
                         <div class="car-badge badge-{{ carro.condicao }} position-absolute" style="top: 15px; left: 15px;">
                             {{ carro.get_condicao_display }}
@@ -317,8 +319,9 @@
                                     <img src="{{ carro.imagem_principal.url }}" alt="{{ carro.modelo }}" 
                                          class="img-fluid rounded thumbnail active" onclick="changeImage(this.src)">
                                 {% else %}
-                                    <img src="{% static 'images/imgcar.jpg' %}" alt="{{ carro.modelo }}" 
-                                         class="img-fluid rounded thumbnail active" onclick="changeImage(this.src)">
+                                    <div class="text-center p-2 bg-light rounded thumbnail" style="height:60px;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fas fa-car text-muted"></i>
+                                    </div>
                                 {% endif %}
                             </div>
                             {% for imagem in carro.get_outras_imagens %}
@@ -415,7 +418,9 @@
                                 {% if carro_relacionado.imagem_principal %}
                                     <img src="{{ carro_relacionado.imagem_principal.url }}" alt="{{ carro_relacionado.modelo }}" class="img-fluid">
                                 {% else %}
-                                    <img src="{% static 'images/imgcar.jpg' %}" alt="{{ carro_relacionado.modelo }}" class="img-fluid">
+                                    <div class="text-center p-4 bg-light" style="height:200px;display:flex;align-items:center;justify-content:center;">
+                                        <div><i class="fas fa-car fa-2x text-muted mb-2"></i><br><small class="text-muted">Sem Imagem</small></div>
+                                    </div>
                                 {% endif %}
                                 <div class="car-badge badge-{{ carro_relacionado.condicao }}">
                                     {{ carro_relacionado.get_condicao_display }}
