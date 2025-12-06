@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'crispy_forms',
+    'cloudinary_storage',
+    'cloudinary',
     'core',
     'contato',
 ]
@@ -156,6 +158,37 @@ STATICFILES_DIRS = [
 # Media files (configuração única)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Cloudinary Configuration for Production
+# Configurar Cloudinary apenas para produção
+USE_CLOUDINARY = config('USE_CLOUDINARY', default=False, cast=bool)
+
+if USE_CLOUDINARY:
+    try:
+        import cloudinary
+        import cloudinary.uploader
+        import cloudinary.api
+    except ImportError:
+        USE_CLOUDINARY = False
+        print("⚠️  Cloudinary não instalado. Usando storage local.")
+
+if USE_CLOUDINARY:
+    # Configurações do Cloudinary
+    cloudinary.config(
+        cloud_name=config('CLOUDINARY_CLOUD_NAME'),
+        api_key=config('CLOUDINARY_API_KEY'),
+        api_secret=config('CLOUDINARY_API_SECRET'),
+        secure=True
+    )
+    
+    # Usar Cloudinary para arquivos de media em produção
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    
+    # URL base do Cloudinary
+    CLOUDINARY_URL = config('CLOUDINARY_URL', default='')
+else:
+    # Configuração local padrão
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 # File upload settings
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
